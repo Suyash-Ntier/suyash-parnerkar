@@ -1,0 +1,162 @@
+{{ 'tisso-gift-guide.css' | asset_url | stylesheet_tag }}
+
+<section class="tisso-gift-guide section-{{ section.id }}">
+  <div class="tisso-gift-guide__topbar">
+    <div class="tisso-gift-guide__logo">{{ section.settings.logo_text }}</div>
+    <div class="tisso-gift-guide__top-text">{{ section.settings.top_text }}</div>
+
+    {% if section.settings.top_button_label != blank %}
+      <a href="{{ section.settings.top_button_link }}" class="tisso-btn tisso-btn--yellow">
+        {{ section.settings.top_button_label }}
+        <span>→</span>
+      </a>
+    {% endif %}
+  </div>
+
+  <div
+    class="tisso-gift-guide__hero"
+    {% if section.settings.bg_image != blank %}
+      style="background-image:url('{{ section.settings.bg_image | image_url: width: 2200 }}');"
+    {% endif %}
+  >
+ <div class="tisso-gift-guide__content">
+  <div
+    class="tisso-gift-guide__content-inner {% if section.settings.enable_content_box %}tisso-gift-guide__content-inner--boxed{% endif %}"
+    style="
+      --content-bg: {{ section.settings.content_box_bg }};
+      --content-padding: {{ section.settings.content_box_padding }}px;
+      --content-radius: {{ section.settings.content_box_radius }}px;
+      --content-opacity: {{ section.settings.content_box_opacity | divided_by: 100.0 }};
+    "
+  >
+    <h1>{{ section.settings.heading }}</h1>
+    <div class="tisso-gift-guide__text">{{ section.settings.text }}</div>
+
+    {% if section.settings.button_label != blank %}
+      <a href="{{ section.settings.button_link }}" class="tisso-btn tisso-btn--black">
+        {{ section.settings.button_label }}
+        <span>→</span>
+      </a>
+    {% endif %}
+  </div>
+</div>
+  </div>
+
+  {% if section.settings.announcement_text != blank %}
+    <div class="tisso-gift-guide__announcement">
+      {{ section.settings.announcement_text }}
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Tisso Gift Guide",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo text",
+      "default": "TISSO VISON"
+    },
+    {
+      "type": "text",
+      "id": "top_text",
+      "label": "Top center text",
+      "default": "Find the ideal gift for your loved ones."
+    },
+    {
+      "type": "text",
+      "id": "top_button_label",
+      "label": "Top button label",
+      "default": "CHOOSE GIFT"
+    },
+    {
+      "type": "url",
+      "id": "top_button_link",
+      "label": "Top button link"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Hero background image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Gift Guide"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Hero button label",
+      "default": "SHOP NOW"
+    },
+    {
+  "type": "checkbox",
+  "id": "enable_content_box",
+  "label": "Enable content box",
+  "default": false
+},
+{
+  "type": "color",
+  "id": "content_box_bg",
+  "label": "Content box background",
+  "default": "#ffffff"
+},
+{
+  "type": "range",
+  "id": "content_box_opacity",
+  "label": "Content box opacity",
+  "min": 0,
+  "max": 100,
+  "step": 5,
+  "unit": "%",
+  "default": 90
+},
+{
+  "type": "range",
+  "id": "content_box_padding",
+  "label": "Content box padding",
+  "min": 20,
+  "max": 80,
+  "step": 4,
+  "unit": "px",
+  "default": 40
+},
+{
+  "type": "range",
+  "id": "content_box_radius",
+  "label": "Content box border radius",
+  "min": 0,
+  "max": 30,
+  "step": 2,
+  "unit": "px",
+  "default": 8
+},
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Hero button link"
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement text",
+      "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tisso Gift Guide"
+    }
+  ]
+}
+{% endschema %}
