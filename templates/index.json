@@ -9,6 +9,27 @@
  */
 {
   "sections": {
+    "tisso_gift_guide_jnVRUg": {
+      "type": "tisso-gift-guide",
+      "name": "Tisso Gift Guide",
+      "settings": {
+        "logo_text": "TISSO VISON",
+        "top_text": "Find the ideal gift for your loved ones.",
+        "top_button_label": "CHOOSE GIFT",
+        "top_button_link": "",
+        "bg_image": "shopify://shop_images/Frame.png",
+        "heading": "The Gift Guide",
+        "text": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.",
+        "button_label": "SHOP NOW",
+        "enable_content_box": true,
+        "content_box_bg": "#ffffff",
+        "content_box_opacity": 100,
+        "content_box_padding": 40,
+        "content_box_radius": 8,
+        "button_link": "",
+        "announcement_text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+      }
+    },
     "hero_jVaWmY": {
       "type": "hero",
       "blocks": {
@@ -295,40 +316,83 @@
         "padding-block-end": 48
       }
     },
-    "tisso_gift_guide_NHwbm6": {
-      "type": "tisso-gift-guide",
-      "name": "Tisso Gift Guide",
-      "settings": {
-        "logo_text": "TISSO VISON",
-        "top_text": "Find the ideal gift for your loved ones.",
-        "top_button_label": "CHOOSE GIFT",
-        "top_button_link": "",
-        "bg_image": "shopify://shop_images/Frame.png",
-        "heading": "The Gift Guide",
-        "text": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.",
-        "button_label": "SHOP NOW",
-        "enable_content_box": true,
-        "content_box_bg": "#ffffff",
-        "content_box_opacity": 100,
-        "content_box_padding": 40,
-        "content_box_radius": 8,
-        "button_link": "",
-        "announcement_text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
-      }
-    },
-    "tisso_shoppable_gallery_BY8VVx": {
+    "tisso_shoppable_gallery_fwmgGN": {
       "type": "tisso-shoppable-gallery",
+      "blocks": {
+        "image_product_3V7H9r": {
+          "type": "image_product",
+          "settings": {
+            "image": "shopify://shop_images/black-bag-over-the-shoulder_925x_4cae5708-5e9e-4e7e-96ec-9649f0c20cd8.jpg",
+            "product": "black-leather-bag",
+            "hotspot_x": 63,
+            "hotspot_y": 55
+          }
+        },
+        "image_product_JPUKFh": {
+          "type": "image_product",
+          "settings": {
+            "image": "shopify://shop_images/man-adjusts-blue-tuxedo-bowtie_925x_55a49e12-d54b-488e-b7a0-ea4c201eb01f.jpg",
+            "product": "blue-silk-tuxedo",
+            "hotspot_x": 86,
+            "hotspot_y": 51
+          }
+        },
+        "image_product_bpAA9T": {
+          "type": "image_product",
+          "settings": {
+            "image": "shopify://shop_images/red-plaid-shirt_925x_70e9e5a8-8fc5-4d60-9a9a-cc2e0dd57cc9.jpg",
+            "product": "chequered-red-shirt",
+            "hotspot_x": 65,
+            "hotspot_y": 50
+          }
+        },
+        "image_product_XwJEPz": {
+          "type": "image_product",
+          "settings": {
+            "image": "shopify://shop_images/leather-jacket-and-tea_925x_2490cde1-7e61-4151-9a65-de8a763bc701.jpg",
+            "product": "classic-leather-jacket",
+            "hotspot_x": 75,
+            "hotspot_y": 20
+          }
+        },
+        "image_product_9xhXHQ": {
+          "type": "image_product",
+          "settings": {
+            "image": "shopify://shop_images/casual-fashion-woman_925x_56b56608-f207-45c1-b677-bb5aa26c1c7a.jpg",
+            "product": "classic-varsity-top",
+            "hotspot_x": 50,
+            "hotspot_y": 28
+          }
+        },
+        "image_product_yrdbDr": {
+          "type": "image_product",
+          "settings": {
+            "image": "shopify://shop_images/young-female-models-denim_925x_44c2cf9e-4030-4347-9d4a-f0e4a1479b4a.jpg",
+            "product": "dark-denim-top",
+            "hotspot_x": 75,
+            "hotspot_y": 50
+          }
+        }
+      },
+      "block_order": [
+        "image_product_3V7H9r",
+        "image_product_JPUKFh",
+        "image_product_bpAA9T",
+        "image_product_XwJEPz",
+        "image_product_9xhXHQ",
+        "image_product_yrdbDr"
+      ],
       "name": "Tisso Shoppable Gallery",
       "settings": {
         "heading": "Tisso vison in the wild",
-        "auto_add_product": ""
+        "auto_add_product": "dark-winter-jacket"
       }
     }
   },
   "order": [
+    "tisso_gift_guide_jnVRUg",
     "hero_jVaWmY",
     "product_list_fa6P9H",
-    "tisso_gift_guide_NHwbm6",
-    "tisso_shoppable_gallery_BY8VVx"
+    "tisso_shoppable_gallery_fwmgGN"
   ]
 }
