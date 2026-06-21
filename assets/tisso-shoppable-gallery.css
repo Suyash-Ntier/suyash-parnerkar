@@ -1,0 +1,295 @@
+.tisso-gallery {
+  background: #fff;
+  color: #000;
+  padding: 78px 0 50px;
+}
+
+.tisso-gallery__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 46px;
+}
+
+.tisso-gallery__heading {
+  margin: 0 0 30px;
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: 400;
+  font-family: serif;
+}
+
+.tisso-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.tisso-gallery__item {
+  position: relative;
+  overflow: hidden;
+  background: #f4f4f4;
+}
+
+.tisso-gallery__item img {
+  width: 100%;
+  height: 395px;
+  object-fit: cover;
+  display: block;
+}
+
+.tisso-gallery__hotspot {
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: #000;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tisso-modal[hidden] {
+  display: none;
+}
+
+.tisso-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+.tisso-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.tisso-modal__content {
+  width: 360px;
+  max-width: calc(100vw - 32px);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  padding: 18px 24px 28px;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  color: #000;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
+}
+
+.tisso-modal__close {
+  position: absolute;
+  right: 18px;
+  top: 12px;
+  border: 0;
+  background: transparent;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.tisso-modal__product {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.tisso-modal__image {
+  width: 120px;
+  height: 140px;
+  object-fit: cover;
+}
+
+.tisso-modal__title {
+  margin: 18px 0 12px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.tisso-modal__price {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.tisso-modal__description {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.tisso-modal__field {
+  margin-top: 14px;
+}
+
+.tisso-modal__field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+/* Color option wrapper */
+.tisso-modal__colors {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background: #fff;
+  border: 1px solid #000;
+  overflow: hidden;
+}
+
+/* Individual color option */
+.tisso-modal__color {
+  min-height: 50px;
+  padding: 0 18px;
+  position: relative;
+  border: 0;
+  background: transparent;
+  color: #000;
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  transition: color 0.25s ease;
+}
+
+/* Left color swatch strip */
+.tisso-modal__color::before {
+  content: "";
+  width: 3px;
+  height: 50px;
+  position: absolute;
+  left: 0;
+  background: var(--color-swatch, #1f55ff);
+  z-index: 3;
+}
+
+/* Sliding black background */
+.tisso-modal__color::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #000;
+  transform: translateX(-100%);
+  transition: transform 0.28s ease;
+  z-index: 1;
+}
+
+.tisso-modal__color span {
+  position: relative;
+  z-index: 2;
+}
+
+.tisso-modal__color:hover,
+.tisso-modal__color.is-active {
+  color: #fff;
+}
+
+.tisso-modal__color:hover::after,
+.tisso-modal__color.is-active::after {
+  transform: translateX(0);
+}
+
+.tisso-modal__select {
+  width: 100%;
+  min-height: 50px;
+  padding: 0 14px;
+  border: 1px solid #000;
+  background: #fff;
+  color: #000;
+  font-size: 16px;
+}
+
+.tisso-modal__add {
+  width: 100%;
+  min-height: 55px;
+  margin-top: 34px;
+  padding: 0 28px;
+  border: 0;
+  background: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  gap: 34px;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.tisso-modal__add span:last-child {
+  font-size: 28px;
+}
+
+.tisso-modal__message {
+  margin: 10px 0 0;
+  font-size: 13px;
+}
+
+@media screen and (max-width: 749px) {
+  .tisso-gallery {
+    padding: 52px 0 35px;
+  }
+
+  .tisso-gallery__container {
+    padding: 0 18px;
+  }
+
+  .tisso-gallery__heading {
+    font-size: 30px;
+  }
+
+  .tisso-gallery__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tisso-gallery__item img {
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .tisso-gallery {
+    padding: 38px 0 28px;
+  }
+
+  .tisso-gallery__container {
+    padding: 0 20px;
+  }
+
+  .tisso-gallery__heading {
+    margin-bottom: 24px;
+    text-align: center;
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .tisso-gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+  }
+
+  .tisso-gallery__item img {
+    width: 100%;
+    height: 188px;
+    object-fit: cover;
+  }
+
+  .tisso-gallery__hotspot {
+    width: 18px;
+    height: 18px;
+    font-size: 15px;
+  }
+
+  .tisso-modal__content {
+    width: calc(100vw - 32px);
+    max-width: 340px;
+  }
+}

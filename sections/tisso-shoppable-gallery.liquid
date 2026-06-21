@@ -1,0 +1,167 @@
+{{ 'tisso-shoppable-gallery.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'tisso-shoppable-gallery.js' | asset_url }}" defer></script>
+
+<section class="tisso-gallery section-{{ section.id }}" data-tisso-gallery>
+  <div class="tisso-gallery__container">
+    {% if section.settings.heading != blank %}
+      <h2 class="tisso-gallery__heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="tisso-gallery__grid">
+      {% for block in section.blocks %}
+        {% assign product = block.settings.product %}
+
+        <div class="tisso-gallery__item" {{ block.shopify_attributes }}>
+          {% if block.settings.image != blank %}
+            <img
+              src="{{ block.settings.image | image_url: width: 900 }}"
+              alt="{{ block.settings.image.alt | escape }}"
+              loading="lazy"
+              width="{{ block.settings.image.width }}"
+              height="{{ block.settings.image.height }}"
+            >
+          {% endif %}
+
+          {% if product != blank %}
+            <button
+              type="button"
+              class="tisso-gallery__hotspot"
+              style="left: {{ block.settings.hotspot_x }}%; top: {{ block.settings.hotspot_y }}%;"
+              data-hotspot
+              data-product-title="{{ product.title | escape }}"
+              data-product-price="{{ product.price | money | escape }}"
+              data-product-description="{{ product.description | strip_html | truncate: 150 | escape }}"
+              data-product-image="{{ product.featured_image | image_url: width: 300 }}"
+              data-product-url="{{ product.url }}"
+              data-options='{{ product.options_with_values | json | escape }}'
+              data-variants='[
+                {% for variant in product.variants %}
+                  {
+                    "id": {{ variant.id | json }},
+                    "title": {{ variant.title | json }},
+                    "available": {{ variant.available | json }},
+                    "option1": {{ variant.option1 | json }},
+                    "option2": {{ variant.option2 | json }},
+                    "option3": {{ variant.option3 | json }}
+                  }{% unless forloop.last %},{% endunless %}
+                {% endfor %}
+              ]'
+              aria-label="Open {{ product.title | escape }}"
+            >
+              +
+            </button>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% assign auto_add_product = section.settings.auto_add_product %}
+  {% assign auto_add_variant = auto_add_product.selected_or_first_available_variant %}
+
+  <input
+    type="hidden"
+    data-auto-add-variant-id
+    value="{% if auto_add_variant != blank %}{{ auto_add_variant.id }}{% endif %}"
+  >
+
+  <div class="tisso-modal" data-product-modal hidden>
+    <div class="tisso-modal__overlay" data-modal-close></div>
+
+    <div class="tisso-modal__content" role="dialog" aria-modal="true">
+      <button type="button" class="tisso-modal__close" data-modal-close aria-label="Close popup">×</button>
+
+      <div class="tisso-modal__product">
+        <img class="tisso-modal__image" data-modal-image src="" alt="">
+
+        <div>
+          <h3 class="tisso-modal__title" data-modal-title></h3>
+          <div class="tisso-modal__price" data-modal-price></div>
+          <p class="tisso-modal__description" data-modal-description></p>
+        </div>
+      </div>
+
+      <div class="tisso-modal__field" data-color-wrapper>
+        <label>Color</label>
+        <div class="tisso-modal__colors" data-color-options></div>
+      </div>
+
+      <div class="tisso-modal__field" data-size-wrapper>
+        <label>Size</label>
+        <select class="tisso-modal__select" data-size-select>
+          <option value="">Choose your size</option>
+        </select>
+      </div>
+
+      <button type="button" class="tisso-modal__add" data-add-to-cart>
+        <span data-add-text>ADD TO CART</span>
+        <span>→</span>
+      </button>
+
+      <p class="tisso-modal__message" data-modal-message></p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Tisso Shoppable Gallery",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Tisso vison in the wild"
+    },
+    {
+      "type": "product",
+      "id": "auto_add_product",
+      "label": "Auto add product",
+      "info": "Select Soft Winter Jacket here."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_product",
+      "name": "Image with product",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Gallery image"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "range",
+          "id": "hotspot_x",
+          "label": "Hotspot horizontal position",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 65
+        },
+        {
+          "type": "range",
+          "id": "hotspot_y",
+          "label": "Hotspot vertical position",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 50
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tisso Shoppable Gallery"
+    }
+  ]
+}
+{% endschema %}
