@@ -315,11 +315,20 @@
         "button_link": "",
         "announcement_text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
       }
+    },
+    "tisso_shoppable_gallery_BY8VVx": {
+      "type": "tisso-shoppable-gallery",
+      "name": "Tisso Shoppable Gallery",
+      "settings": {
+        "heading": "Tisso vison in the wild",
+        "auto_add_product": ""
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
     "product_list_fa6P9H",
-    "tisso_gift_guide_NHwbm6"
+    "tisso_gift_guide_NHwbm6",
+    "tisso_shoppable_gallery_BY8VVx"
   ]
 }
